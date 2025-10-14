@@ -1,0 +1,121 @@
+{
+    "schema-version": 1.0,
+    "content":
+    [
+        {
+            "name": "sign_proj_cm33_s",
+            "enabled" : true,
+            "commands" : 
+            [
+                {
+                    "command" : "sign",
+                    "inputs" : 
+                    [
+                        {
+                            "file" : "./../build/project_hex/proj_cm33_s.hex",
+                            "header-size": "0x400",
+                            "fill-value" : "0xff",
+                            "slot-size" : "0x0080000",
+                            "hex-address" : "0x70880000",
+                            "image-version" : "1.1.0",
+                            "align" : 1,
+                            "min-erase-size" : "0x10000",
+                            "boot-record" : "proj_cm33_s",
+                            "pad": true
+                        }
+                    ],
+                    "outputs": 
+                    [
+                        {
+                            "file" : "./../build/proj_cm33_s.bin",
+                            "format": "bin"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sign_proj_cm33_ns",
+            "enabled" : true,
+            "commands" : 
+            [
+                {
+                    "command" : "sign",
+                    "inputs" : 
+                    [
+                        {
+                            "file" : "./../build/project_hex/proj_cm33_ns.hex",
+                            "header-size": "0x400",
+                            "fill-value" : "0xff",
+                            "slot-size" : "0xC0000",
+                            "hex-address" : "0x60AC0000",
+                            "image-version" : "1.1.0",
+                            "align" : "1",
+                            "min-erase-size" : "0x10000",
+                            "boot-record" : "proj_cm33_ns",
+                            "pad": true
+                        }
+                    ],
+                    "outputs": 
+                    [
+                        {
+                            "file" : "./../build/proj_cm33_ns.bin",
+                            "format": "bin"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sign_proj_cm55",
+            "enabled" : true,
+            "commands" : 
+            [
+                {
+                    "command" : "sign",
+                    "inputs" : 
+                    [
+                        {
+                            "file" : "./../build/project_hex/proj_cm55.hex",
+                            "header-size": "0x400",
+                            "fill-value" : "0xff",
+                            "slot-size" : "0x80000",
+                            "hex-address" : "0x60D00000",
+                            "image-version" : "1.1.0",
+                            "align" : "1",
+                            "min-erase-size" : "0x10000",
+                            "boot-record" : "proj_cm55",
+                            "pad": true
+                        }
+                    ],
+                    "outputs": 
+                    [
+                        {
+                            "file" : "./../build/proj_cm55.bin",
+                            "format": "bin"
+                        }
+                    ]
+                }
+            ]
+        },    
+        {
+            "name": "create ota-tar file",
+            "description": "",
+            "enabled": true,
+            "commands" :
+            [
+                {
+                    "command" : "custom-script",
+                    "inputs" :
+                    [
+                        {
+                            "description" : "create ota tar file",
+                            "command-line": "bash ./../scripts/ota_postbuild.sh ./../proj_cm33_ns/flashmap.mk",
+                            "shell":false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
