@@ -7,7 +7,7 @@
 #
 ################################################################################
 # \copyright
-# (c) 2023-2025, Infineon Technologies AG, or an affiliate of Infineon
+# (c) 2023-2026, Infineon Technologies AG, or an affiliate of Infineon
 # Technologies AG.  SPDX-License-Identifier: Apache-2.0
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,6 +50,8 @@ TOOLCHAIN=GCC_ARM
 # for your IDE.
 CONFIG?=Debug
 
+# Enable VLA (Variable Length Arrays) support for IAR toolchain when using swap update type
+CFLAGS+=$(if $(and $(filter IAR,$(TOOLCHAIN)),$(filter swap,$(UPDATE_TYPE))),--vla)
 
 #Image Type can be BOOT or UPDATE. Default to BOOT.
 # NOTE: This flag is used only for testing with the Edge Protect Bootloader. See README.md of Edge Protect Bootloader CE
